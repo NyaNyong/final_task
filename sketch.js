@@ -5,6 +5,7 @@ let emitter;
 let repeller;
 let repellers = [];
 let att;
+let sec = 0;
 
 function setup() {
   createCanvas(400, 400);
@@ -18,6 +19,12 @@ function draw() {
     
   repeller.setPower(300);
   repeller.move(createVector(mouseX,mouseY));
+  
+  if (sec === 50){
+    att.move(createVector(random(0,400),random(0,400)));
+    sec = 0;
+  }
+  
   
   emitter.addParticle();
   emitter.addParticle();
@@ -39,6 +46,8 @@ function draw() {
     emitter.applyRepeller(s);
     s.show();
   }
+  
+  sec = sec +1;
 }
 
 function mouseClicked() {
