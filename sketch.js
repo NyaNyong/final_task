@@ -3,6 +3,7 @@ let emitter;
 
 //{!1} One repeller
 let repeller;
+let repellers = [];
 let att;
 
 function setup() {
@@ -32,4 +33,14 @@ function draw() {
 
   repeller.show();
   att.show();
+
+  for (let s of repellers) {
+    s.setPower(300);
+    s.show();
+  }
+}
+
+function mouseClicked() {
+  let s = new Repeller(mouseX, mouseY);
+  repellers.push(s);
 }
