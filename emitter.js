@@ -6,6 +6,10 @@ class Emitter {
     this.particles = [];
   }
 
+  move(value) {
+    this.origin = value;
+  }
+
   addParticle() {
     this.particles.push(new Particle(this.origin.x, this.origin.y));
   }

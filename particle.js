@@ -14,6 +14,7 @@ class Particle {
     this.lifespan = 255.0;
   }
 
+
   run() {
     this.update();
     this.show();

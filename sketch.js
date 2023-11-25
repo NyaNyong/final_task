@@ -22,10 +22,12 @@ function draw() {
   
   if (sec === 50){
     att.move(createVector(random(0,400),random(0,400)));
+    emitter.move(createVector(random(100,300),random(100,300)));
     sec = 0;
   }
   
   
+
   emitter.addParticle();
   emitter.addParticle();
   emitter.addParticle();
