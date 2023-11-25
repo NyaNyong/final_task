@@ -7,6 +7,8 @@ let repellers = [];
 let att;
 let sec = 0;
 
+let repelpower = 200;
+
 function setup() {
   createCanvas(400, 400);
   emitter = new Emitter(width / 2, height/2);
@@ -16,18 +18,24 @@ function setup() {
 
 function draw() {
   background(255);
+  
+  if (keyIsDown(UP_ARROW)) {
+    repelpower += 1;
+  }
+
+  if (keyIsDown(DOWN_ARROW)) {
+    repelpower -= 1;
+  }
     
-  repeller.setPower(300);
+  repeller.setPower(repelpower);
   repeller.move(createVector(mouseX,mouseY));
   
   if (sec === 50){
     att.move(createVector(random(0,400),random(0,400)));
-    emitter.move(createVector(random(100,300),random(100,300)));
     sec = 0;
   }
   
   
-
   emitter.addParticle();
   emitter.addParticle();
   emitter.addParticle();
@@ -44,7 +52,7 @@ function draw() {
   att.show();
 
   for (let s of repellers) {
-    s.setPower(300);
+    s.setPower(repelpower);
     emitter.applyRepeller(s);
     s.show();
   }
