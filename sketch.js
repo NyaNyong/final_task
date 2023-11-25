@@ -15,7 +15,7 @@ function setup() {
 function draw() {
   background(255);
     
-  repeller.setPower(mouseX);
+  repeller.setPower(300);
   repeller.move(createVector(mouseX,mouseY));
   
   emitter.addParticle();
