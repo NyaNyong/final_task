@@ -36,6 +36,7 @@ function draw() {
 
   for (let s of repellers) {
     s.setPower(300);
+    emitter.applyRepeller(s);
     s.show();
   }
 }
