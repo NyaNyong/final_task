@@ -16,16 +16,16 @@ function draw() {
   background(255);
     
   repeller.setPower(mouseX);
-  repeller.move(0.5);
+  repeller.move(createVector(mouseX,mouseY));
   
   emitter.addParticle();
   emitter.addParticle();
   emitter.addParticle();
   
-  // We’re applying a universal gravity.
+  
   let gravity = createVector(0, 0.1);
   emitter.applyForce(gravity);
-  //{!1} Applying the repeller
+
   emitter.applyRepeller(repeller);
   emitter.applyAttractor(att);
   emitter.run();
