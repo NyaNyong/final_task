@@ -6,7 +6,6 @@ let repeller;
 let repellers = [];
 let att;
 let sec = 0;
-let repelpower = 200;
 
 let powerslider;
 
@@ -22,14 +21,7 @@ function setup() {
 function draw() {
   background(255);
   
-  if (keyIsDown(UP_ARROW)) {
-    repelpower += 1;
-  }
-
-  if (keyIsDown(DOWN_ARROW)) {
-    repelpower -= 1;
-  }
-  
+  let repelpower = powerslider.value();
     
   repeller.setPower(repelpower);
   repeller.move(createVector(mouseX,mouseY));
