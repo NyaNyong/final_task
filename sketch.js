@@ -7,16 +7,27 @@ let repellers = [];
 let att;
 let sec = 0;
 
-let powerslider;
-
 let gui;
 let params = {
   repelleramount : 0,
   repelleramountMin : 0,
   repelleramountMax : 5,
+  repelpower : 0,
+  repelpowerMin : 0,
+  repelpowerMax : 400,
   particleamount : 3,
   particleamountMin : 0,
   particleamountMax : 10,
+  attX : 150,
+  attXMin : 0,
+  attXMax : 400,
+  attY : 150,
+  attYMin : 0,
+  attYMax : 400,
+  attpower : 0,
+  attpowerMin : 0,
+  attpowerMax : 400,
+  
 }
 
 
@@ -27,10 +38,8 @@ function setup() {
   emitter = new Emitter(width / 2, height/2);
   repeller = new Repeller(width / 2, 350);
   att = new Attractor(20, height/2);
-  powerslider = createSlider(200, 400, 200);
-  powerslider.position(20,20);
   
-  gui = createGui('test slider');
+  gui = createGui('task console');
   gui.addObject(params);
   gui.setPosition(310,10);
 }
@@ -38,28 +47,20 @@ function setup() {
 function draw() {
   background(255);
   
-  
-  
-  let repelpower = powerslider.value();
-  
-  if (sec === 50){
-    att.move(createVector(random(0,400),random(0,400)));
-    sec = 0;
-  }
-  
   for (let j=0; j < params.particleamount; j++){
     emitter.addParticle();
   }
   
-  
   let gravity = createVector(0, 0.1);
-  emitter.applyForce(gravity);
 
+  emitter.applyForce(gravity);
   emitter.applyRepeller(repeller);
   emitter.applyAttractor(att);
   emitter.run();
 
+  att.move(createVector(params.attX, params.attY));
   att.show();
+  att.setPower(params.attpower);
 
   for (let i=0; i < params.repelleramount; i++){
     let interval = width / params.repelleramount;
@@ -68,18 +69,9 @@ function draw() {
   }
   
   for (let s of repellers) {
-    s.setPower(repelpower);
+    s.setPower(params.repelpower);
     emitter.applyRepeller(s);
     s.show();
     repellers = [];
   }
-  
-  sec = sec +1;
 }
-
-// function keyPressed() {
-//   if (keyCode === 32) {
-//     let s = new Repeller(mouseX, mouseY);
-//     repellers.push(s);
-//   }
-// }
