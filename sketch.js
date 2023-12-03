@@ -54,9 +54,12 @@ function draw() {
   let gravity = createVector(0, 0.1);
 
   emitter.applyForce(gravity);
-  emitter.applyRepeller(repeller);
   emitter.applyAttractor(att);
   emitter.run();
+  
+  if (params.repelleramount > 0) {
+    emitter.applyRepeller(repeller);
+  }
 
   att.move(createVector(params.attX, params.attY));
   att.show();
