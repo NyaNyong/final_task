@@ -11,7 +11,7 @@ let gui;
 let params = {
   repelleramount : 0,
   repelleramountMin : 0,
-  repelleramountMax : 5,
+  repelleramountMax : 20,
   repelpower : 200,
   repelpowerMin : 0,
   repelpowerMax : 400,
