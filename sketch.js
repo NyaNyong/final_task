@@ -12,7 +12,7 @@ let params = {
   repelleramount : 0,
   repelleramountMin : 0,
   repelleramountMax : 5,
-  repelpower : 0,
+  repelpower : 200,
   repelpowerMin : 0,
   repelpowerMax : 400,
   particleamount : 3,
@@ -24,7 +24,7 @@ let params = {
   attY : 150,
   attYMin : 0,
   attYMax : 400,
-  attpower : 0,
+  attpower : 200,
   attpowerMin : 0,
   attpowerMax : 400,
   
