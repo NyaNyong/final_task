@@ -7,25 +7,21 @@ let repellers = [];
 let att;
 let sec = 0;
 
-let repelpower = 200;
+let powerslider;
 
 function setup() {
   createCanvas(400, 400);
   emitter = new Emitter(width / 2, height/2);
   repeller = new Repeller(width / 2, 350);
   att = new Attractor(20, height/2);
+  powerslider = createSlider(200, 400, 200);
+  powerslider.position(20,20);
 }
 
 function draw() {
   background(255);
   
-  if (keyIsDown(UP_ARROW)) {
-    repelpower += 1;
-  }
-
-  if (keyIsDown(DOWN_ARROW)) {
-    repelpower -= 1;
-  }
+  let repelpower = powerslider.value();
     
   repeller.setPower(repelpower);
   repeller.move(createVector(mouseX,mouseY));
@@ -60,7 +56,9 @@ function draw() {
   sec = sec +1;
 }
 
-function mouseClicked() {
-  let s = new Repeller(mouseX, mouseY);
-  repellers.push(s);
+function keyPressed() {
+  if (keyCode === 32) {
+    let s = new Repeller(mouseX, mouseY);
+    repellers.push(s);
+  }
 }
