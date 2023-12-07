@@ -9,7 +9,7 @@
 class Particle {
   constructor(x, y) {
     this.position = createVector(x, y);
-    this.velocity = createVector(random(-0.5, 0.5), random(-1, 0));
+    this.velocity = createVector(random(-0.5, 0.5), random(-0.5, 0.5));
     this.acceleration = createVector(0, 0);
     this.lifespan = 255.0;
   }

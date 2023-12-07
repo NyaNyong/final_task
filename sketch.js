@@ -12,24 +12,21 @@ let params = {
   repelleramount : 0,
   repelleramountMin : 0,
   repelleramountMax : 12,
-  repelpower : 200,
-  repelpowerMin : 190,
-  repelpowerMax : 210,
+  repelpower : 0,
+  repelpowerMin : 0,
+  repelpowerMax : 50,
   particleamount : 3,
   particleamountMin : 0,
   particleamountMax : 10,
-  attX : 150,
-  attXMin : 0,
-  attXMax : 400,
-  attY : 150,
-  attYMin : 0,
-  attYMax : 400,
-  attpower : 200,
-  attpowerMin : 190,
-  attpowerMax : 300,
+  attpower : 0,
+  attpowerMin : 0,
+  attpowerMax : 400,
   time : 30,
   timeMin : 1,
   timeMax : 100,
+  gravity : 10,
+  gravityMin : 0,
+  gravityMax : 10,
 }
 
 
@@ -37,7 +34,7 @@ let params = {
 
 function setup() {
   createCanvas(400, 400);
-  emitter = new Emitter(width / 2, height/2);
+  emitter = new Emitter(width / 2, height/2, 255);
   repeller = new Repeller(width / 2, 350);
   att = new Attractor(20, height/2);
   
@@ -53,7 +50,7 @@ function draw() {
     emitter.addParticle();
   }
   
-  let gravity = createVector(0, 0.1);
+  let gravity = createVector(0, params.gravity/100);
 
   emitter.applyForce(gravity);
   emitter.run();
@@ -66,9 +63,10 @@ function draw() {
     }
   }
 
-  att.move(createVector(params.attX, params.attY));
+  // att.move(createVector(params.attX, params.attY));
+  att.move(createVector(mouseX,mouseY));
   att.show();
-  att.setPower(params.attpower);
+  att.setPower(params.attpower+200);
 
   for (let i=0; i < params.repelleramount; i++){
     let interval = width / params.repelleramount;
@@ -77,7 +75,9 @@ function draw() {
   }
   
   for (let s of repellers) {
-    s.setPower(params.repelpower);
+    if (sec > params.time) {
+      s.setPower(params.repelpower+200);
+    }
     emitter.applyRepeller(s);
     s.show();
     repellers = [];
