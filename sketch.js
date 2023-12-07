@@ -27,7 +27,9 @@ let params = {
   attpower : 200,
   attpowerMin : 190,
   attpowerMax : 300,
-  
+  time : 30,
+  timeMin : 1,
+  timeMax : 100,
 }
 
 
@@ -56,7 +58,7 @@ function draw() {
   emitter.applyForce(gravity);
   emitter.run();
   
-  if(sec > 12) {
+  if(sec > params.time) {
     emitter.applyAttractor(att);
   
     if (params.repelleramount > 0) {
@@ -81,7 +83,7 @@ function draw() {
     repellers = [];
   }
 
-  if(sec > 24) {
+  if(sec > params.time*2) {
     sec = 0;
   }
   sec = sec+1;
