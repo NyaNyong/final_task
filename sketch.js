@@ -13,8 +13,8 @@ let params = {
   repelleramountMin : 0,
   repelleramountMax : 12,
   repelpower : 200,
-  repelpowerMin : 0,
-  repelpowerMax : 400,
+  repelpowerMin : 190,
+  repelpowerMax : 210,
   particleamount : 3,
   particleamountMin : 0,
   particleamountMax : 10,
@@ -25,8 +25,8 @@ let params = {
   attYMin : 0,
   attYMax : 400,
   attpower : 200,
-  attpowerMin : 0,
-  attpowerMax : 400,
+  attpowerMin : 190,
+  attpowerMax : 300,
   
 }
 
@@ -54,11 +54,14 @@ function draw() {
   let gravity = createVector(0, 0.1);
 
   emitter.applyForce(gravity);
-  emitter.applyAttractor(att);
   emitter.run();
   
-  if (params.repelleramount > 0) {
-    emitter.applyRepeller(repeller);
+  if(sec > 12) {
+    emitter.applyAttractor(att);
+  
+    if (params.repelleramount > 0) {
+      emitter.applyRepeller(repeller);
+    }
   }
 
   att.move(createVector(params.attX, params.attY));
@@ -77,4 +80,9 @@ function draw() {
     s.show();
     repellers = [];
   }
+
+  if(sec > 24) {
+    sec = 0;
+  }
+  sec = sec+1;
 }
