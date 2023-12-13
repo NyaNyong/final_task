@@ -27,6 +27,7 @@ let params = {
   gravity : 10,
   gravityMin : 0,
   gravityMax : 10,
+  Mydesire : ['균형잡힌', '지름신', '절제력', '수동']
 }
 
 
@@ -41,10 +42,34 @@ function setup() {
   gui = createGui('task console');
   gui.addObject(params);
   gui.setPosition(310,10);
+
+  
 }
 
 function draw() {
   background(255);
+
+  if(params.Mydesire == '균형잡힌') {
+    params.repelleramount = 3;
+    params.repelpower = 0;
+    params.attpower = 200;
+    params.time = 30;
+    params.gravity = 10;
+  } else if(params.Mydesire == '지름신') {
+    params.repelleramount = 0;
+    params.repelpower = -50;
+    params.attpower = 400;
+    params.time = 50;
+    params.gravity = 3;
+  } else if(params.Mydesire == '절제력') {
+    params.repelleramount = 5;
+    params.repelpower = 10;
+    params.attpower = 0;
+    params.time = 50;
+    params.gravity = 10;
+  } else if(params.Mydesire == '수동') {
+
+  }
   
   for (let j=0; j < params.particleamount; j++){
     emitter.addParticle();
@@ -87,4 +112,6 @@ function draw() {
     sec = 0;
   }
   sec = sec+1;
+
+  
 }
