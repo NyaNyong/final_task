@@ -11,10 +11,10 @@ let gui;
 let params = {
   repelleramount : 0,
   repelleramountMin : 0,
-  repelleramountMax : 12,
+  repelleramountMax : 16,
   repelpower : 0,
-  repelpowerMin : 0,
-  repelpowerMax : 50,
+  repelpowerMin : -50,
+  repelpowerMax : 10,
   particleamount : 3,
   particleamountMin : 0,
   particleamountMax : 10,
